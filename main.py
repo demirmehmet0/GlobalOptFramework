@@ -6,14 +6,14 @@ import time
 
 from LWFWSW import main as lwfwsw
 def read_file(file_name):
-    f = open(file_name, 'r')
+    f = open(file_name, 'r', encoding='utf-8')
     data = f.read()
     f.close()
     return data
 def replace(path, find, replace):
     matrixCpp = read_file(path)
     matrixCpp = matrixCpp.replace(find, replace)
-    f = open(path, 'w')
+    f = open(path, 'w', encoding='utf-8')
     f.write(matrixCpp)
     f.close()
 
