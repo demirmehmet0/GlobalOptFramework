@@ -10,6 +10,7 @@
 #include <time.h>
 #include "random"
 #include "array"
+#include "algorithm"
 #define SIZE 32
 using namespace std;
 
