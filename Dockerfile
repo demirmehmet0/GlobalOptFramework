@@ -23,5 +23,5 @@ copy XZLBZ /XZLBZ
 copy paar /paar
 copy yosysTools /yosysTools
 copy main.py /
-copy matrix.txt /
+copy matrices/matrix.txt /matrices/matrix.txt
 copy parameter.txt / 
