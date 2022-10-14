@@ -17,7 +17,7 @@ RUN mkdir XZLBZ
 
 copy a1_a2_rnbp /a1_a2_rnbp
 copy bp /bp
-copy framework-main-2 /framework
+copy framework-main-2 /framework-main-2
 copy LWFWSW /LWFWSW
 copy matrices /matrices
 copy XZLBZ /XZLBZ

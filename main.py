@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
+import string
 import sys
 import time
-
+""" string.decode('utf-8')  # or:
+unicode(string, 'utf-8') """
 
 from LWFWSW import main as lwfwsw
 def read_file(file_name):
