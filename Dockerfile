@@ -5,7 +5,11 @@ RUN apt install python3 -y
 RUN apt install g++ -y 
 RUN apt install cmake -y 
 RUN apt install nano -y
-
+RUN apt-get install -y locales
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
 RUN mkdir a1_a2_rnbp 
 RUN mkdir bp 
 RUN mkdir framework-main-2 
