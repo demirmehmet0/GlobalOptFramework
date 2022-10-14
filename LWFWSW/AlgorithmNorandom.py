@@ -474,14 +474,14 @@ if __name__ == "__main__":
         if result[0] <= minnum:
             if result[0] == minnum:
                 times = times + 1
-                print("min now：{}".format(result[0]))
+                print("min now: {}".format(result[0]))
                 minnum = result[0]
                 minV.append(result[1])
                 minE.append(result[2])
                 minD.append(result[3])
             else:
                 times = 1
-                print("min now：{}".format(result[0]))
+                print("min now: {}".format(result[0]))
                 minnum = result[0]
                 minV = []
                 minE = []
@@ -490,7 +490,7 @@ if __name__ == "__main__":
                 minE.append(result[2])
                 minD.append(result[3])
 
-    print("min：{}".format(minnum))  # the minmum XOR gates
+    print("min: {}".format(minnum))  # the minmum XOR gates
     print(minV)  # nodes set
     print(minE)  # edges set
     for D in minD:
@@ -508,7 +508,7 @@ if __name__ == "__main__":
                 if D[key] > minDepthNum:
                     minDepthNum = D[key]
     print("depth:{}".format(minDepthNum))
-    print("times：{}".format(times))
+    print("times: {}".format(times))
     time2 = time.time()
     print("time:{}".format(time2 - time1))
 
