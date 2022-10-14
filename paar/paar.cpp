@@ -89,8 +89,9 @@ int paar_algorithm1(std::fstream *f, uint64_t *input_matrix)
     }
     xor_count -= DIM;
     *f << "Naive XOR count: " << xor_count << endl;
-    *f << "SLP:" << endl
-       << endl;
+    cout << "Naive XOR count: " << xor_count << endl;
+    *f << "SLP:" << endl<< endl;
+    cout << "SLP:" << endl<< endl;
 
     do
     {
@@ -125,6 +126,7 @@ int paar_algorithm1(std::fstream *f, uint64_t *input_matrix)
     for (auto const &prog : program)
     {
         *f << "x" << ctr << " = x" << prog.first << " + x" << prog.second << endl;
+        cout << "x" << ctr << " = x" << prog.first << " + x" << prog.second << endl;
         ctr++;
     }
 
@@ -133,6 +135,8 @@ int paar_algorithm1(std::fstream *f, uint64_t *input_matrix)
         bool plus_flag = 0;
         *f << endl
            << "y" << i;
+        cout << endl
+             << "y" << i;
         for (uint64_t j = 0; j < number_of_columns; j++)
         {
             if ((input_matrix[j] & (1ll << (DIM - 1 - i))) != 0)
@@ -140,11 +144,13 @@ int paar_algorithm1(std::fstream *f, uint64_t *input_matrix)
                 if (plus_flag == 0)
                 {
                     *f << " = x" << j;
+                    cout << " = x" << j;
                     plus_flag = 1;
                 }
                 else
                 {
                     *f << " + x" << j;
+                    cout << " + x" << j;
                 }
             }
         }
@@ -152,6 +158,8 @@ int paar_algorithm1(std::fstream *f, uint64_t *input_matrix)
 
     *f << endl
        << endl;
+    cout << endl
+         << endl;
     return xor_count;
 }
 
@@ -234,6 +242,7 @@ int paar_algorithm_2_recursive(std::fstream *f, uint64_t *input_matrix, int curr
         for (auto const &prog : program)
         {
             *f << "x" << ctr << " = x" << prog.first << " + x" << prog.second << endl;
+            cout << "x" << ctr << " = x" << prog.first << " + x" << prog.second << endl;
             ctr++;
         }
 
@@ -242,6 +251,8 @@ int paar_algorithm_2_recursive(std::fstream *f, uint64_t *input_matrix, int curr
             int plus_flag = 0;
             *f << endl
                << "y" << i;
+            cout << endl
+                 << "y" << i;
             for (int j = 0; j < number_of_columns; j++)
             {
                 if ((input_matrix[j] & (1ll << (DIM - 1 - i))) != 0)
@@ -249,11 +260,13 @@ int paar_algorithm_2_recursive(std::fstream *f, uint64_t *input_matrix, int curr
                     if (plus_flag == 0)
                     {
                         *f << " = x" << j;
+                        cout << " = x" << j;
                         plus_flag = 1;
                     }
                     else
                     {
                         *f << " + x" << j;
+                        cout << " + x" << j;
                     }
                 }
             }
@@ -264,6 +277,11 @@ int paar_algorithm_2_recursive(std::fstream *f, uint64_t *input_matrix, int curr
            << "xor count (tmp) = " << global_best_xor_count << endl
            << endl
            << endl;
+        cout << endl
+             << endl
+             << "xor count (tmp) = " << global_best_xor_count << endl
+             << endl
+             << endl;
     }
 
     return xor_count_best;
@@ -284,6 +302,8 @@ int paar_algorithm2(std::fstream *f, uint64_t *input_matrix)
     global_best_xor_count = xor_count;
     *f << "xor count (start) = " << global_best_xor_count << endl
        << endl;
+    cout << "xor count (start) = " << global_best_xor_count << endl
+         << endl;
 
     vector<pair<int, int> > program;
 
@@ -430,15 +450,20 @@ int main(int argc, char *argv[])
             {
                 result = paar_algorithm1(&f, input_matrix);
                 f << "Paar1 XOR count:" << result << endl;
+                cout << "Paar1 XOR count:" << result << endl;
             }
             else if (mode.compare("paar2") == 0)
             {
                 result = paar_algorithm2(&f, input_matrix);
                 f << "Paar2 XOR count:" << result << endl;
+                cout << "Paar2 XOR count:" << result << endl;
             }
             f << endl
               << endl
               << endl;
+            cout << endl
+                 << endl
+                 << endl;
         }
         f.close();
         free(input_matrix);
@@ -545,15 +570,21 @@ void PrintResult(bool fin, bool results, char *dpth, char *path)
     std::fstream f(s, std::fstream::out | std::fstream::app);
     f << St << endl
       << endl;
+      cout << St << endl
+        << endl;
     if (!fin)
     {
         f << Threshold << "+" << endl
           << endl;
+        cout << Threshold << "+" << endl
+             << endl;
     }
     else
     {
         f << ProgramSize << endl
           << endl;
+        cout << ProgramSize << endl
+             << endl;
 
         if (results)
         {
@@ -562,6 +593,8 @@ void PrintResult(bool fin, bool results, char *dpth, char *path)
 
             f << "Depth is " << MaxDepth << endl
               << endl;
+            cout << "Depth is " << MaxDepth << endl
+                 << endl;
         }
     }
 }
