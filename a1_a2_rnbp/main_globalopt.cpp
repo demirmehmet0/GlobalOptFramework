@@ -73,14 +73,14 @@ const bool PRINTROWS=true;
 int NumInputs;
 int NumTargets;
 int XorCount;
-long long int Target[MaxBaseSize];
-int Dist[MaxBaseSize]; //distance from current base to Target[i]
-int NDist[MaxBaseSize]; //what Dist would be if NewBase was added
-long long int Base[MaxBaseSize];
-string Program[MaxBaseSize];
+long long int Target[1000];
+int Dist[1000]; //distance from current base to Target[i]
+int NDist[1000]; //what Dist would be if NewBase was added
+long long int Base[1000];
+string Program[1000];
 int BaseSize;
 int TargetsFound;
-int InitDist[MaxBaseSize]; // storing the initial distance
+int InitDist[1000]; // storing the initial distance
 long long int NewBase; //global variable containing a candidate new base
 mt19937 rand_generator;
 

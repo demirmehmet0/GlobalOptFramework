@@ -37,16 +37,16 @@ int St;                     // sequence number of the matrices
 long long int DepthNewBase; // depth of a new base which is used for calculating the new distances
 int NumTargets;
 int ProgramSize;
-long long int Target[MaxBaseSize];
-int Dist[MaxBaseSize];  // distance from current base to Target[i]
-int NDist[MaxBaseSize]; // what Dist would be if NewBase is added
-long long int Base[MaxBaseSize];
+long long int Target[1000];
+int Dist[1000];  // distance from current base to Target[i]
+int NDist[1000]; // what Dist would be if NewBase is added
+long long int Base[1000];
 int BaseSize;
 int TargetsFound;
-char Result[MaxBaseSize][50];
+char Result[1000][50];
 int Res;
 char *flag;
-int Depth[MaxBaseSize];
+int Depth[1000];
 int MaxDepth;
 
 void InitBase();
@@ -643,7 +643,7 @@ void PickNewBaseElementBP()
     int ThisNorm, OldNorm;
     int besti, bestj, d;
     bool easytarget;
-    int BestDist[MaxBaseSize];
+    int BestDist[1000];
 
     MinDistance = BaseSize * NumTargets; // i.e. something big
     OldNorm = 0;                         // i.e. something small

@@ -1,6 +1,8 @@
 //The source code of BFI's algorithm(Algorithm-9-10-11-12-13-14-15) in our framework is provided by the repository given in https://github.com/DaLin10512/framework
 #include"reduce.h"
-
+#include"reduce.h"
+#include"rnbp_a1_a2.h"
+#include"paar.h"
 void ReadTargetMatrix(uint64_t *NumInputs, uint64_t *NumTargets, uint64_t *Target, uint64_t *Dist, uint64_t *InitDist);
 void read_implementation(vector<list> &seq);
 
@@ -43,6 +45,12 @@ int main(int argc, char *argv[])
 
     	switch(OPTION_A)
     	{
+			case 0: Paar_algorithm1(seq, NumInputs, NumTargets, Target); break;
+			case 1: RPaar_algorithm1(seq, NumInputs, NumTargets, Target); break;
+			case 2: BP_algorithm(seq, NumInputs, NumTargets, Target, Dist); break;
+			case 3: A1_A2_RNBP_algorithm(seq, NumInputs, NumTargets, 3, Target, Dist, InitDist); break;
+			case 4: A1_A2_RNBP_algorithm(seq, NumInputs, NumTargets, 4, Target, Dist, InitDist); break;
+			case 5: A1_A2_RNBP_algorithm(seq, NumInputs, NumTargets, 5, Target, Dist, InitDist); break;
 			default:printf("error\n"); break;
     	}
 	}
@@ -84,14 +92,18 @@ void write_file(vector<list> seq)
 	ofstream f;
 	f.open("matrices/result/Reduced_Result.txt");
 	f << "Xor Count = " << seq.size() - SIZE << endl;
+	cout << "Xor Count = " << seq.size() - SIZE << endl;
 	for(int i = SIZE; i < seq.size(); i++)
 	{ 
 		f << "t["<<seq[i].value[0] << "] = t[" << seq[i].value[1] << "] ^ t[" << seq[i].value[2] << "]";
+		cout << "t["<<seq[i].value[0] << "] = t[" << seq[i].value[1] << "] ^ t[" << seq[i].value[2] << "]";
 		if(seq[i].flag >= 0)
 		{
 			f << "    y[" << seq[i].flag << "]";
+			cout << "    y[" << seq[i].flag << "]";
 		}
 		f << endl;
+		cout << endl;
 	}
 	f.close();
 }
