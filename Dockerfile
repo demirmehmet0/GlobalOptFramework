@@ -4,6 +4,7 @@ RUN apt update
 RUN apt install python3 -y  
 RUN apt install g++ -y 
 RUN apt install cmake -y 
+RUN apt install nano -y
 
 RUN mkdir a1_a2_rnbp 
 RUN mkdir bp 
