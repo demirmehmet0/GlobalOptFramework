@@ -178,59 +178,117 @@ elif params["ALGORITHM"] == "8":
 
 elif params["ALGORITHM"] == "9":#bfi
     print("bfi orginal")
+    with open(params["MATRIX_PATH"], "r") as f:
+        size = f.readline()
+        size = size.strip()
+        size = int(size.split(" ")[0])
+        for line in f:
+            matrix += line
     #find int OPTION_B = rand_distribution(rand_generator); in main.cpp and replace with OPTION_B = 1;
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
     os.system("g++ framework-main-2/*.cpp -D FUNCTION=1 -o framework-main-2/bfi.out -lpthread")
     replace('./framework-main-2/reduce.cpp', "int limit = " + params["ITERATION"] + ";", "int limit = 100;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[" + str(size) + "]", "tmp_dis[16]")
     os.system("./framework-main-2/bfi.out < " + params["MATRIX_PATH"])
 elif params["ALGORITHM"] == "10":#bfi paar
     print("bfi paar")
+    with open(params["MATRIX_PATH"], "r") as f:
+        size = f.readline()
+        size = size.strip()
+        size = int(size.split(" ")[0])
+        for line in f:
+            matrix += line
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 0;")
+    replace('./framework-main-2/paar.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
     os.system("g++ framework-main-2/*.cpp -D FUNCTION=1 -o framework-main-2/paar.out -lpthread")
     os.system("./framework-main-2/paar.out < " + params["MATRIX_PATH"])
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = 0;", "int OPTION_B = rand_distribution(rand_generator);")
     replace('./framework-main-2/reduce.cpp', "int limit = " + params["ITERATION"] + ";", "int limit = 100;")
+    replace('./framework-main-2/paar.cpp', "tmp_dis[" + str(size) + "]", "tmp_dis[16]")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[" + str(size) + "]", "tmp_dis[16]")
 elif params["ALGORITHM"] == "11":#bfi rpaar
+    with open(params["MATRIX_PATH"], "r") as f:
+        size = f.readline()
+        size = size.strip()
+        size = int(size.split(" ")[0])
+        for line in f:
+            matrix += line
     print("bfi rpaar")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 1;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
     os.system("g++ framework-main-2/*.cpp -D FUNCTION=1 -o framework-main-2/rpaar.out -lpthread")
     os.system("./framework-main-2/rpaar.out < " + params["MATRIX_PATH"])
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = 1;", "int OPTION_B = rand_distribution(rand_generator);")
     replace('./framework-main-2/reduce.cpp', "int limit = " + params["ITERATION"] + ";", "int limit = 100;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[" + str(size) + "]", "tmp_dis[16]")
 elif params["ALGORITHM"] == "12":#bfi BP
+    with open(params["MATRIX_PATH"], "r") as f:
+        size = f.readline()
+        size = size.strip()
+        size = int(size.split(" ")[0])
+        for line in f:
+            matrix += line
     print("bfi BP")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 2;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
     os.system("g++ framework-main-2/*.cpp -D FUNCTION=1 -o framework-main-2/bp.out -lpthread")
     os.system("./framework-main-2/bp.out < " + params["MATRIX_PATH"])
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = 2;", "int OPTION_B = rand_distribution(rand_generator);")
     replace('./framework-main-2/reduce.cpp', "int limit = " + params["ITERATION"] + ";", "int limit = 100;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[" + str(size) + "]", "tmp_dis[16]")
 elif params["ALGORITHM"] == "13":#bfi a1
+    with open(params["MATRIX_PATH"], "r") as f:
+        size = f.readline()
+        size = size.strip()
+        size = int(size.split(" ")[0])
+        for line in f:
+            matrix += line
     print("bfi a1")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 3;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
     os.system("g++ framework-main-2/*.cpp -D FUNCTION=1 -o framework-main-2/a1.out -lpthread")
     os.system("./framework-main-2/a1.out < " + params["MATRIX_PATH"])
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = 3;", "int OPTION_B = rand_distribution(rand_generator);")
     replace('./framework-main-2/reduce.cpp', "int limit = " + params["ITERATION"] + ";", "int limit = 100;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[" + str(size) + "]", "tmp_dis[16]")
 elif params["ALGORITHM"] == "14":#bfi a2
+    with open(params["MATRIX_PATH"], "r") as f:
+        size = f.readline()
+        size = size.strip()
+        size = int(size.split(" ")[0])
+        for line in f:
+            matrix += line
     print("bfi a2")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 4;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
     os.system("g++ framework-main-2/*.cpp -D FUNCTION=1 -o framework-main-2/a2.out -lpthread")
     os.system("./framework-main-2/a2.out < " + params["MATRIX_PATH"])
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = 4;", "int OPTION_B = rand_distribution(rand_generator);")
     replace('./framework-main-2/reduce.cpp', "int limit = " + params["ITERATION"] + ";", "int limit = 100;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[" + str(size) + "]", "tmp_dis[16]")
 elif params["ALGORITHM"] == "15":#bfi rnbp
+    with open(params["MATRIX_PATH"], "r") as f:
+        size = f.readline()
+        size = size.strip()
+        size = int(size.split(" ")[0])
+        for line in f:
+            matrix += line
     print("bfi rnbp")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 5;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
     os.system("g++ framework-main-2/*.cpp -D FUNCTION=1 -o framework-main-2/rnbp.out -lpthread")
     os.system("./framework-main-2/rnbp.out < " + params["MATRIX_PATH"])
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = 5;", "int OPTION_B = rand_distribution(rand_generator);")
     replace('./framework-main-2/reduce.cpp', "int limit = " + params["ITERATION"] + ";", "int limit = 100;")
+    replace('./framework-main-2/BFI.cpp', "tmp_dis[" + str(size) + "]", "tmp_dis[16]")
 elif params["ALGORITHM"] == "16":#bfi BP
     print("bfi BP")
     replace('./bp/boyarSLP.cpp', "TheMatrix.open(\"\");", "TheMatrix.open(\"" + params["MATRIX_PATH"] + "\");")
