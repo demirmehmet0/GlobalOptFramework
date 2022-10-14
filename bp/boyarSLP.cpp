@@ -260,11 +260,15 @@ void PrintResult()
 {
     std::fstream f("", std::fstream::out | std::fstream::app);
     f << St << endl << endl;
+    cout << St << endl << endl;
     f << ProgramSize << endl << endl;
     cout<<"ProgramSize: "<<ProgramSize<< " and Depth is " << MaxDepth << endl;
-    for(int i = 0; i < Res; ++i)
+    for(int i = 0; i < Res; ++i){
         f << Result[i] ;
+        cout << Result[i] ;
+    }
     f << "Depth is " << MaxDepth << endl << endl;
+    cout << "Depth is " << MaxDepth << endl << endl;
 }
 
 int Max(int a, int b)
