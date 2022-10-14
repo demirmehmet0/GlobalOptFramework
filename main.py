@@ -182,8 +182,6 @@ elif params["ALGORITHM"] == "9":#bfi
         size = f.readline()
         size = size.strip()
         size = int(size.split(" ")[0])
-        for line in f:
-            matrix += line
     #find int OPTION_B = rand_distribution(rand_generator); in main.cpp and replace with OPTION_B = 1;
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/BFI.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
@@ -197,8 +195,6 @@ elif params["ALGORITHM"] == "10":#bfi paar
         size = f.readline()
         size = size.strip()
         size = int(size.split(" ")[0])
-        for line in f:
-            matrix += line
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 0;")
     replace('./framework-main-2/paar.cpp', "tmp_dis[16]", "tmp_dis[" + str(size) + "]")
@@ -214,8 +210,6 @@ elif params["ALGORITHM"] == "11":#bfi rpaar
         size = f.readline()
         size = size.strip()
         size = int(size.split(" ")[0])
-        for line in f:
-            matrix += line
     print("bfi rpaar")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 1;")
@@ -230,8 +224,6 @@ elif params["ALGORITHM"] == "12":#bfi BP
         size = f.readline()
         size = size.strip()
         size = int(size.split(" ")[0])
-        for line in f:
-            matrix += line
     print("bfi BP")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 2;")
@@ -246,8 +238,6 @@ elif params["ALGORITHM"] == "13":#bfi a1
         size = f.readline()
         size = size.strip()
         size = int(size.split(" ")[0])
-        for line in f:
-            matrix += line
     print("bfi a1")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 3;")
@@ -262,8 +252,6 @@ elif params["ALGORITHM"] == "14":#bfi a2
         size = f.readline()
         size = size.strip()
         size = int(size.split(" ")[0])
-        for line in f:
-            matrix += line
     print("bfi a2")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 4;")
@@ -278,8 +266,6 @@ elif params["ALGORITHM"] == "15":#bfi rnbp
         size = f.readline()
         size = size.strip()
         size = int(size.split(" ")[0])
-        for line in f:
-            matrix += line
     print("bfi rnbp")
     replace('./framework-main-2/reduce.cpp', "int limit = 100;", "int limit = " + params["ITERATION"] + ";")
     replace('./framework-main-2/RNBP_A1_A2.cpp', "int OPTION_B = rand_distribution(rand_generator);", "int OPTION_B = 5;")
