@@ -30,3 +30,5 @@ copy yosysTools /yosysTools
 copy main.py /
 copy matrices/matrix.txt /matrices/matrix.txt
 copy parameter.txt / 
+
+CMD [ "python3", "main.py"]
