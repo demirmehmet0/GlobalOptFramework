@@ -16,12 +16,7 @@ using namespace std;
 
 const int MaxBaseSize=1000;
 const bool PRINTROWS=true;
-struct Element
-{
-    int parent_i;
-    int parent_j;
-    int newDist[SIZE];
-};
+
 int NumInputs;
 int DepthLimit; //The depth bound of the output circuit
 int NumMatrices;
@@ -311,15 +306,11 @@ void PickNewBaseElement()
 {
     int MinDistance;
     long long int TheBest;
-    long long int TheBestArray[MaxBaseSize*NumTargets];
     int ThisDist;
     int ThisNorm, OldNorm;
     int besti,bestj, d;
     bool easytarget;
     int BestDist[1000];
-    Element* AllElements = new Element[BaseSize*(BaseSize-1)];
-    int counter = 0;
-    int count2=0;
     MinDistance = BaseSize*NumTargets; //i.e. something big
     OldNorm = 0; //i.e. something small
     //try all pairs of bases
@@ -354,73 +345,45 @@ void PickNewBaseElement()
                 }
                 //resolve tie in favor of largest norm
                 if ((ThisDist < MinDistance) || (ThisNorm > OldNorm) )
-                {
-                    if (counter>3)
-                        counter=0;
-                    AllElements[counter].parent_i=i;
-                    AllElements[counter].parent_j=j;
-                    for (int uu = 0; uu < NumTargets; uu++) AllElements[counter].newDist[uu] = NDist[uu];
-                    TheBestArray[counter]=NewBase;
-                    MinDistance = ThisDist;
-                    OldNorm = ThisNorm;
-                    counter++;
-                    count2++;
-                }
+				{
+					besti = i;
+					bestj = j;
+					TheBest = NewBase;
+					for (int uu = 0; uu < NumTargets; uu++) BestDist[uu] = NDist[uu];
+					MinDistance = ThisDist;
+					OldNorm = ThisNorm;
+				}
             }
         }
         if (easytarget) break;
     }
 
-
-/*
-    array<double,3> intervals ={0.0,(float)(counter-1),(float)(counter-1)};
-    array<double,3> weights = {0.0, 10.0, 10.0};
-    piecewise_linear_distribution<double>
-            distribution (intervals.begin(),intervals.end(),weights.begin());
-    int number = distribution(generator);
-    */
-    rand_generator.seed(time(0));
-    uniform_int_distribution<int> rand_distribution(0,counter-1);
-    int number = rand_distribution(rand_generator);
-    if(counter==0||counter==1)
-        number=0;
-    if(counter==2&&count2==2)
-        number=1;
-    if(counter==3&&count2==3)
-        number=2;
-    besti = AllElements[number].parent_i;
-    bestj = AllElements[number].parent_j;
-    TheBest = TheBestArray[number];
-    for (int uu = 0; uu < NumTargets; uu++) BestDist[uu] = AllElements[number].newDist[uu];
-
-
-    //update Dist array
-    NewBase = TheBest;
-    for (int i = 0; i < NumTargets; i++) Dist[i] = BestDist[i];
-    //for (int i = 0; i < NumTargets; i++)
-    //printf ("%d %d %d \n", besti, bestj, MinDistance);
-    //std::cout<<"Press [ENTER] to continue\n";
+NewBase = TheBest;
+	for (int i = 0; i < NumTargets; i++) Dist[i] = BestDist[i];
+	//for (int i = 0; i < NumTargets; i++)
+	//printf ("%d %d %d \n", besti, bestj, MinDistance);
+	//std::cout<<"Press [ENTER] to continue\n";
     //std::cin.get();
-    Base[BaseSize] = TheBest;
-    Depth[BaseSize] = Max(besti, bestj) + 1;
-    if(Depth[BaseSize] > MaxDepth)
-        MaxDepth = Depth[BaseSize];
-    BaseSize++;
-    //output linear program
-    ProgramSize++;
-    //print the expression
-    flag = Result[Res];
-    flag += sprintf(flag, "t%d = ", ProgramSize);
-    if(besti < NumInputs)
-        flag += sprintf(flag, "x%d + ", besti);
-    else
-        flag += sprintf(flag, "t%d + ", besti - NumInputs + 1);
-    if(bestj < NumInputs)
-        flag += sprintf(flag, "x%d  (%d)\n", bestj, Depth[BaseSize-1]);
-    else
-        flag += sprintf(flag, "t%d  (%d)\n", bestj - NumInputs + 1, Depth[BaseSize-1]);
-    ++Res;
-    if (is_target(TheBest)) TargetsFound++; //this shouldn't happen
+	Base[BaseSize] = TheBest;
+	Depth[BaseSize] = Max(besti, bestj) + 1;
+	if(Depth[BaseSize] > MaxDepth)
+		MaxDepth = Depth[BaseSize];
+	BaseSize++;
+	//output linear program
+	ProgramSize++;
+	//print the expression
+	flag = Result[Res];
+	flag += sprintf(flag, "t%d = ", ProgramSize);
+	if(besti < NumInputs)
+		flag += sprintf(flag, "x%d + ", besti);
+	else
+		flag += sprintf(flag, "t%d + ", besti - NumInputs + 1);
+	if(bestj < NumInputs)
+		flag += sprintf(flag, "x%d  (%d)\n", bestj, Depth[BaseSize-1]);
+	else
+		flag += sprintf(flag, "t%d  (%d)\n", bestj - NumInputs + 1, Depth[BaseSize-1]);
+	++Res;
+	if (is_target(TheBest)) TargetsFound++; //this shouldn't happen
 } //PickNewBaseElement()
 
 void binprint(long long int x) //outputs last NumInputs bits of x
