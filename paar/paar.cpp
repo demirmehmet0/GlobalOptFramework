@@ -328,7 +328,6 @@ void ReadMatrix(uint64_t *input_matrix)
     long long int PowerOfTwo = pow(2.0, NumTargets - 1);
     for (int i = 0; i < NumTargets; i++)
     {
-        TheMatrix.ignore(1, '[');
         for (int j = 0; j < NumInputs; j++)
         {
             TheMatrix >> bit;
