@@ -46,19 +46,30 @@ ALGORITHM - The algorithm to be compiled
         ALGORITHM=16 - BFI-BP-depthConstrained          -> (MATRIX_PATH, NUM_MATRICES, THRESHOLD, DEPTH, BFI)
 
 MATRIX_PATH - The path to the matrix file
+
         MATRIX_PATH=path/to/matrix/file
+        
 
 ITERATION - The number of iterations to be performed
+
         ITERATION=10
         
 An example command will be:
+
         python3 main.py
+
 
 The matrix formats to be sent to the algorithms are given in the matrices folder.
 
 The source code of BP algorithm in our framework is provided by the repository given in https://github.com/siweisun/involutory_mds/tree/master/Code_for_BoyarSLP
+
 The source code of Paar's algorithm(Paar1-Paar2) in our framework is provided by the repository given in https://github.com/rub-hgi/shorter_linear_slps_for_mds_matrices
+
 The source code of BFI's algorithm(Algorithm-9-10-11-12-13-14-15) in our framework is provided by the repository given in https://github.com/DaLin10512/framework
+
 The source code of LWFWSW's algorithm in our framework is provided by the repository given in https://github.com/QunLiu-sdu/Towards-Low-Latency-Implementation
+
 The source code of A1-A2-RNBP's algorithm in our framework is provided by the repository given in https://github.com/thomaspeyrin/XORreduce
+
 The source code of XZLBZ's algorithm in our framework is provided by the repository given in https://github.com/xiangzejun/Optimizing_Implementations_of_Linear_Layers
+
