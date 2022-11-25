@@ -1,28 +1,48 @@
 #### If you use our framework, please cite this paper as: M. K. Pehlivanoglu and M. A. Demir, "A Framework for Global Optimization of Linear Layers in SPN Block Ciphers," 2022 15th International Conference on Information Security and Cryptography (ISCTURKEY), 2022, pp. 13-18, doi: 10.1109/ISCTURKEY56345.2022.9931793.
 
+
 In this folder, there are a total of 2 files and 6 folders
 
+
 Each of these folders represents an algorithm.
+
 
 The parameter file must be edited for the framework to work.
 Values ​​in parameters.txt should be set as:
 
+
 ALGORITHM - The algorithm to be compiled 
+
         ALGORITHM=1 - XZLBZ                             -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=2 - BP                                -> (MATRIX_PATH, NUM_MATRICES, THRESHOLD, DEPTH)
+        
         ALGORITHM=3 - RNBP                              -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=4 - A1                                -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=5 - A2                                -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=6 - Paar1                             -> (MATRIX_PATH, NUM_MATRICES, THRESHOLD)
+        
         ALGORITHM=7 - Paar2                             -> (MATRIX_PATH, NUM_MATRICES, THRESHOLD)
+        
         ALGORITHM=8 - LWFWSW                            -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=9 - BFI                               -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=10 - BFI-Paar1                        -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=11 - BFI-RPaar1                       -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=12 - BFI-BP                           -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=13 - BFI-A1                           -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=14 - BFI-A2                           -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=15 - BFI-RNBP                         -> (MATRIX_PATH, ITERATION)
+        
         ALGORITHM=16 - BFI-BP-depthConstrained          -> (MATRIX_PATH, NUM_MATRICES, THRESHOLD, DEPTH, BFI)
 
 MATRIX_PATH - The path to the matrix file
